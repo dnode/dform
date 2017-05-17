@@ -18,6 +18,7 @@ function dform(formElement) {
   var inputElements = formElement.find('input, select');
   formElement.submit(function (event) {
     event.preventDefault();
+    submitElement.attr('disabled', 'disabled');
     var formData = {};
     $.each(inputElements, function (_, element) {
       element = $(element);
@@ -26,14 +27,13 @@ function dform(formElement) {
         formData[name] = element.val();
       }
     });
-    submitElement.attr('disabled', 'disabled');
     eventEmitter.trigger('submit');
     $[formElement.attr('method')](formElement.attr('action'), formData)
       .always(function () {
         submitElement.removeAttr('disabled', 'disabled');
       })
-      .done(function (data) {
-        eventEmitter.trigger('done', data);
+      .done(function (responseData) {
+        eventEmitter.trigger('done', responseData);
       })
       .fail(function (jqXHR) {
         eventEmitter.trigger('fail', jqXHR);
