@@ -1,7 +1,4 @@
 function dform(formElement) {
-  if (typeof formElement === 'string') {
-    formElement = $(formElement);
-  }
   var eventEmitter = {
     on: function (name, handler) {
       this[name] = this[name] || [];
