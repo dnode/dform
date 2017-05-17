@@ -1,19 +1,16 @@
-Handler for Ajax forms:
-* Listen on the submit event of the form
-* Disable the submit button during the handling
-* Collects the data of all input fields
-* Request the action URL by Ajax request
-* Can be extended by offering different events (e.g. help texts on failures)
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <title>dform</title>
+</head>
+<body>
 
-# Installation
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 
-`bower i --save dform`
-
-
-# Example
-
-```html
 <form id="formExample" method="post" action="/example">
   <label for="inputExample" class="sr-only">Example</label>
   <input type="text" id="inputExample" name="example" placeholder="Example" required autofocus>
@@ -36,4 +33,5 @@ Handler for Ajax forms:
       });
   });
 </script>
-```
+</body>
+</html>
