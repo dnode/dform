@@ -24,7 +24,7 @@ Handler for Ajax forms:
 
 <script>
   $(function () {
-    dform('#formSignin')
+    dform($('#formSignin'))
       .on('submit', function () {
         // The submit button is clicked, before the request is sent
       })
