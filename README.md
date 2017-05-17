@@ -28,7 +28,7 @@ Handler for Ajax forms:
       .on('submit', function () {
         // The submit button is clicked, before the request is sent
       })
-      .on('done', function (data) {
+      .on('done', function (responseData) {
         // The request finished with a success
       })
       .on('fail', function (jqXHR) {
