@@ -14,7 +14,7 @@ function dform(formElement) {
       return this;
     }
   };
-  var submitElement = formElement.find('input[type=submit]');
+  var submitElement = formElement.find('[type=submit]');
   var inputElements = formElement.find('input, select');
   formElement.submit(function (event) {
     event.preventDefault();
