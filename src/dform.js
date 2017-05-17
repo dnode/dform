@@ -39,5 +39,6 @@ function dform(formElement) {
         eventEmitter.trigger('fail', jqXHR);
       });
   });
+  submitElement.removeAttr('disabled', 'disabled');
   return eventEmitter;
 }
