@@ -1,5 +1,7 @@
 function dform(formElement) {
-  formElement = $(formElement);
+  if (typeof formElement === 'string') {
+    formElement = $(formElement);
+  }
   var eventEmitter = {
     on: function (name, handler) {
       this[name] = this[name] || [];
@@ -28,7 +30,6 @@ function dform(formElement) {
       }
     });
     submitElement.attr('disabled', 'disabled');
-    formElement.removeClass('has-error');
     eventEmitter.trigger('submit');
     $[formElement.attr('method')](formElement.attr('action'), formData)
       .always(function () {
@@ -38,7 +39,6 @@ function dform(formElement) {
         eventEmitter.trigger('done', data);
       })
       .fail(function (jqXHR) {
-        formElement.addClass('has-error');
         eventEmitter.trigger('fail', jqXHR);
       });
   });
