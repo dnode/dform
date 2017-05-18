@@ -1,26 +1,26 @@
 function dform(formElement) {
   var eventEmitter = {
-    on: function (name, handler) {
+    on: function(name, handler) {
       this[name] = this[name] || [];
       this[name].push(handler);
       return this;
     },
-    trigger: function (name, event) {
+    trigger: function(name, event) {
       if (this[name]) {
-        this[name].map(function (handler) {
+        this[name].map(function(handler) {
           handler(event);
         });
       }
       return this;
-    }
+    },
   };
   var submitElement = formElement.find('[type=submit]');
   var inputElements = formElement.find('input, select');
-  formElement.submit(function (event) {
+  formElement.submit(function(event) {
     event.preventDefault();
     submitElement.attr('disabled', 'disabled');
     var formData = {};
-    $.each(inputElements, function (_, element) {
+    $.each(inputElements, function(_, element) {
       element = $(element);
       var name = element.attr('name');
       if (name) {
@@ -29,13 +29,13 @@ function dform(formElement) {
     });
     eventEmitter.trigger('submit');
     $[formElement.attr('method')](formElement.attr('action'), formData)
-      .always(function () {
+      .always(function() {
         submitElement.removeAttr('disabled', 'disabled');
       })
-      .done(function (responseData) {
+      .done(function(responseData) {
         eventEmitter.trigger('done', responseData);
       })
-      .fail(function (jqXHR) {
+      .fail(function(jqXHR) {
         eventEmitter.trigger('fail', jqXHR);
       });
   });

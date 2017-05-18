@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "scripts": {
+    "fmt": "dprettier"
+  },
+  "devDependencies": {
+    "dprettier": "^1.1.0"
+  }
+}
